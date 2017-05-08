@@ -89,6 +89,7 @@ a {
     &:hover {
         //当链接处于焦点、被激活和鼠标悬停其上时清除轮廓
         outline-width: 0;
+        text-decoration: none;
     }
 }
 
@@ -528,12 +529,17 @@ label {
         .fr;
         width: 980px;
         .function {
-            text-align: right;
             margin-bottom: 20px;
             a {
                 display: inline-block;
-                margin-bottom: 10px;
+                padding: 8px 20px;
+                border-radius: 5px;
+                background-color: #337ab7; 
                 font-size: @fs + 2;
+                color: #fff;
+                &:hover {
+                    background-color: #286090;
+                }
                 i {
                     margin-right: 5px;
                 }
@@ -547,4 +553,61 @@ label {
             }
         }
     }
+}
+
+/*modal*/
+label.required {
+    display: block;
+    position: relative;
+    &:after {
+        content: "*";
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        font-size: @fs;
+        color: #f00;
+    }
+}
+.modal-title {
+    text-align: center;
+}
+.modal-body {
+    > div {
+        width: 100%;
+        font-size: @fs;
+        .clearfix;
+        label {
+            .fl;
+            width: 85px;
+            height: 40px;
+            line-height: 40px;
+        }
+        input {
+            .fl;
+            width: 460px;
+            border: 1px solid #ccc;
+            height: 40px;
+            line-height: 38px;
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+        textarea {
+            .fl;
+            width: 460px;
+            max-width: 460px;
+            max-height: 400px;
+            border: 1px solid #ccc;
+            line-height: 28px;
+            font-size: @fs - 2;
+            padding-right: 10px;
+            padding-left: 10px;            
+        }
+    }
+    .tagname {
+        margin-bottom: 15px;
+    }
+}
+.modal-footer {
+    text-align: center;
 }

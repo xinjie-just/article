@@ -1,4 +1,5 @@
-<?php 
+<?php
+/*对上传图片的功能进行封装*/	 
 //$fileInfo=$_FILES['myFile'];
 function uploadFile($fileInfo,$uploadPath = 'uploads',$flag=true,$allowExt=array('jpeg','jpg','gif','png'),$maxSize = 2097152){
 	// 判断错误号

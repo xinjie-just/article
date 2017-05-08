@@ -117,6 +117,7 @@ a:focus,
 a:active,
 a:hover {
   outline-width: 0;
+  text-decoration: none;
 }
 /* ===文本=== */
 abbr[title] {
@@ -537,13 +538,18 @@ label:hover {
   width: 980px;
 }
 #main .side-right .function {
-  text-align: right;
   margin-bottom: 20px;
 }
 #main .side-right .function a {
   display: inline-block;
-  margin-bottom: 10px;
+  padding: 8px 20px;
+  border-radius: 5px;
+  background-color: #337ab7;
   font-size: 18px;
+  color: #fff;
+}
+#main .side-right .function a:hover {
+  background-color: #286090;
 }
 #main .side-right .function a i {
   margin-right: 5px;
@@ -552,4 +558,66 @@ label:hover {
   display: inline-block;
   padding-right: 5px;
   padding-left: 5px;
+}
+/*modal*/
+label.required {
+  display: block;
+  position: relative;
+}
+label.required:after {
+  content: "*";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #f00;
+}
+.modal-title {
+  text-align: center;
+}
+.modal-body > div {
+  width: 100%;
+  font-size: 16px;
+}
+.modal-body > div:before {
+  content: "";
+  display: table;
+}
+.modal-body > div:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.modal-body > div label {
+  float: left;
+  width: 85px;
+  height: 40px;
+  line-height: 40px;
+}
+.modal-body > div input {
+  float: left;
+  width: 460px;
+  border: 1px solid #ccc;
+  height: 40px;
+  line-height: 38px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.modal-body > div textarea {
+  float: left;
+  width: 460px;
+  max-width: 460px;
+  max-height: 400px;
+  border: 1px solid #ccc;
+  line-height: 28px;
+  font-size: 14px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.modal-body .tagname {
+  margin-bottom: 15px;
+}
+.modal-footer {
+  text-align: center;
 }
