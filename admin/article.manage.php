@@ -46,8 +46,9 @@
 		<main id="main">
 			<div class="side-left">
 				<div class="datetime">
-					<span class="time">15:33</span>
-					<span class="date">2017年11月11日 星期一</span>
+					<!--下面实时显示日期和时间，id分别为 time 和 date-->
+					<span class="time" id="time"></span>
+					<span class="date" id="date"></span>
 				</div>
 				<nav class="manage-nav">
 					<ul>
@@ -61,11 +62,10 @@
 				</nav>				
 			</div>
 			<div class="side-right">
-				<div class="function">					
-					<!-- Button trigger modal -->
-					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+				<div class="function">
+					<a href="add.article.php" title="添加资讯">
 						<i class="iconfont icon-add"></i>添加资讯
-					</button>
+					</a>
 				</div>
 				<div class="table-responsive">
 					<table class="article-list table table-condensed table-bordered table-striped table-hover">
@@ -80,39 +80,27 @@
 							</tr>
 						</thead>
 						<tbody>
+							<?php 
+								if(empty($data)){
+									echo "没有资讯，待管理员后台添加"	;
+								}else {							
+									foreach($data as $value){
+							?>
 							<tr>
-								<td>1</td>
-								<td><a href="#" title="10个信号让你了解心脏">10个信号让你了解心脏</a></td>
-								<td>心脏病、高血压、糖尿病、老年病</td>
-								<td>http://www.pp-panda.com/0001.html</td>
-								<td>2017-03-18</td>
+								<td><?php echo $value['id']?></td>
+								<td><a href="/article.details.php?id=<?php echo $value['id']?>" title="<?php echo $value['title']?>"><?php echo $value['title']?></a></td>
+								<td><?php echo $value['tag_codes']?></td>
+								<td><?php echo 'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER["SERVER_PORT"] . '/article.details.php?id=' . $value['id'] ?></td>
+								<td><?php date_default_timezone_set("PRC"); echo date("Y-m-d", $value['dateline'])?> </td>
 								<td>
-									<a href="#" title="编辑">编辑</a>
-									<a href="#" title="删除">删除</a>
+									<a href="modify.article.php?id=<?php echo $value['id']?>" title="修改这条资讯">修改</a>
+									<a href="del.article.handle.php?id=<?php echo $value['id']?>" title="删除" onclick="javascript:alert('确认要删除该条资讯吗？');">删除</a>
 								</td>
 							</tr>
-							<tr>
-								<td>2</td>
-								<td><a href="#" title="10个信号">10个信号</a></td>
-								<td>心脏病、高血压、糖尿病、老年病</td>
-								<td>http://www.pp-panda.com/0001.html</td>
-								<td>2017-03-18</td>
-								<td>
-									<a href="#" title="编辑">编辑</a>
-									<a href="#" title="删除">删除</a>
-								</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td><a href="#" title="10个信号让你了解心脏病发生前兆">10个信号让你了解心脏病发生前兆</a></td>
-								<td>心脏病、高血压、糖尿病、老年病</td>
-								<td>http://www.pp-panda.com/0001.html</td>
-								<td>2017-03-18</td>
-								<td>
-									<a href="#" title="编辑">编辑</a>
-									<a href="#" title="删除">删除</a>
-								</td>
-							</tr>
+							<?php
+									}
+								}	
+							?>
 						</tbody>
 					</table>
 				</div>
@@ -140,5 +128,6 @@
 		</main>
 		<script src="../script/jquery-3.2.0.min.js"></script>
 		<script src="../script/bootstrap.min.js"></script>
+		<script src="../script/now-datetime.js"></script><!--显示当前日期时间函数-->
 	</body>
 </html>

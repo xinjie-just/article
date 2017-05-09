@@ -1,15 +1,19 @@
 <?php	
 	require_once('../connect.php');
-	$id = $_POST['id'];
+	
+	//把传递过来的信息入库,在入库之前对所有的信息进行校验。
+	$id = $_POST['id'];	
 	$title = $_POST['title'];
-	$author = $_POST['author'];
+	$tag = $_POST['modifyArticleTag'];
+	$link = $_POST['link'];
 	$description = $_POST['description'];
-	$body = $_POST['body'];
+	$body = $_POST['content'];
 	$dateline =  time();
-	$updatesql = "update article set title='$title',author='$author',description='$description',body='$body',dateline=$dateline where id=$id"; // 这里没有修改 id
+
+	$updatesql = "update article set title='$title',tag_codes='$tag',content_url='$link',description=$description,body='$body',dateline=$dateline where id=$id"; // 这里没有修改 id
 	if(mysql_query($updatesql)){
-		echo "<script>alert('修改文章成功');window.location.href='manage.message.list.php';</script>";
+		echo "<script>alert('修改资讯成功');window.location.href='article.message.php';</script>";
 	}else{
-		echo "<script>alert('修改文章失败');window.location.href='modify.message.php';</script>";
+		echo "<script>alert('修改资讯失败');window.location.href='modify.article.php';</script>";
 	}
 ?>

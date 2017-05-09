@@ -488,6 +488,7 @@ label {
             padding-bottom: 10px;
             margin-bottom: 20px;
             border: 1px solid #999;
+            height: 85px;
             > span {                
                 display: block;
                 text-align: center;
@@ -563,10 +564,11 @@ label.required {
         content: "*";
         position: absolute;
         top: 50%;
-        right: 10px;
+        right: 0;
         transform: translateY(-50%);
         font-size: @fs;
         color: #f00;
+        padding-top: 10px;
     }
 }
 .modal-title {
@@ -610,4 +612,12 @@ label.required {
 }
 .modal-footer {
     text-align: center;
+}
+
+/*验证表单，错误信息*/
+.form-horizontal {
+    legend {
+        width: auto;
+        border-bottom-width: 0;
+    }
 }

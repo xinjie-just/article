@@ -497,6 +497,7 @@ label:hover {
   padding-bottom: 10px;
   margin-bottom: 20px;
   border: 1px solid #999;
+  height: 85px;
 }
 #main .side-left .datetime > span {
   display: block;
@@ -568,10 +569,11 @@ label.required:after {
   content: "*";
   position: absolute;
   top: 50%;
-  right: 10px;
+  right: 0;
   transform: translateY(-50%);
   font-size: 16px;
   color: #f00;
+  padding-top: 10px;
 }
 .modal-title {
   text-align: center;
@@ -620,4 +622,9 @@ label.required:after {
 }
 .modal-footer {
   text-align: center;
+}
+/*验证表单，错误信息*/
+.form-horizontal legend {
+  width: auto;
+  border-bottom-width: 0;
 }

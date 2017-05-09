@@ -32,8 +32,9 @@
 		<main id="main">
 			<div class="side-left">
 				<div class="datetime">
-					<span class="time">15:33</span>
-					<span class="date">2017年11月11日 星期一</span>
+					<!--下面实时显示日期和时间，id分别为 time 和 date-->
+					<span class="time" id="time"></span>
+					<span class="date" id="date"></span>
 				</div>
 				<nav class="manage-nav">
 					<ul>
@@ -47,10 +48,57 @@
 				</nav>				
 			</div>
 			<div class="side-right">
-				
+				<div class="function">
+					<a href="javascript:void(0)" title="取消返回" id="back">
+						<i class="iconfont icon-back"></i>取消返回
+					</a>
+				</div>
+				<form action="add.tag.handle.php" enctype="multipart/form-data" method="post" id="addTagForm" name="addTagForm" class="form-horizontal add-tag-form">
+					<fieldset>
+						<legend>添加标签</legend>
+						<div class="form-group">
+							<label for="title" class="col-sm-2 control-label required">标签名称</label>
+	    					<div class="col-sm-10">
+								<input type="text" id="title" name="title" class="form-control" placeholder="请输入标签名称">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="description" class="col-sm-2 control-label">标签描述</label>
+	    					<div class="col-sm-10">
+								<textarea id="description" name="description" class="form-control" placeholder="请输入标签描述"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+						    <div class="col-sm-offset-2 col-sm-10">
+						      	<button type="submit" id="addTagSubmit" name="addTagSubmit" class="btn btn-default add-tag-submit">添加</button>
+						    </div>
+						</div>
+					</fieldset>
+				</form>				
 			</div>
 		</main>
 		<script src="../script/jquery-3.2.0.min.js"></script>
 		<script src="../script/bootstrap.min.js"></script>
+		<script src="../script/jquery.validate.min.js"></script>
+		<script src="../script/article.js"></script>
+		<script src="../script/now-datetime.js"></script><!--显示当前日期时间函数-->
+		<script>
+			/*下面对表单验证进行*/			
+			$(document).ready(function() {
+				// 提示错误
+				$("#addTagForm").validate({
+					rules: {
+						title: {
+							required: true
+						}
+					},
+					messages: {
+						title: {
+							required: "请输入资讯标题"
+						}
+					}
+				});
+			});
+		</script>
 	</body>
 </html>

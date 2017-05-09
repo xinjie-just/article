@@ -14,63 +14,98 @@
 		<title>修改标签 | 资讯管理系统后台</title>
 		<meta name="keywords" content="个人健康管理,健康小区建设,基础医疗服务,HCC,智能、便捷、全面,远程医疗服务" />
     	<meta name="description" content="HCC日常健康管理体系是以个人为中心的健康生活平台，引导全民积极参与健康管理，为个人提供全面的健康生活服务，帮助人们建立科学合理的生活方式和健康管理方式的服务平台。" />
-    	<link rel="stylesheet" href="/style/message.css" />
+    	<link rel="stylesheet" href="../style/bootstrap.css" />
+    	<link rel="stylesheet" href="../style/article.css" />
 	</head>
 	<body>
-		<!--<header>
-			<h1>修改资讯</h1>
-		</header>-->
-		<main>
-			<div class="sidebar">
-				<aside class="left-sidebar">
-					<nav>
-						<ul>
-							<li><a href="add.tag.php" title="标签管理">标签管理</a></li>
-							<li><a href="manage.tag.php" title="文章管理" class="active">文章管理</a></li>
-						</ul>
-					</nav>
-				</aside>
-				<aside class="right-sidebar">
-					<nav>
-						<ul>
-							<li><a href="add.message.php" title="添加文章" class="active">添加文章</a></li>
-							<li><a href="manage.message.list.php" title="管理文章">管理文章</a></li>
-						</ul>
-					</nav>
-					<p class="tips">带红色星号为必填(必选)字段</p>
-					<form action="modify.message.handle.php" method="post" enctype="multipart/form-data" id="modifyMessage" name="modifyMessage" class="modify-message-form">
-						<input type="hidden" name="id" value="<?php echo $data['id']?>">
-						<div class="title">
-							<label for="title">标题</label>
-							<input type="text" id="title" name="title" value="<?php echo $data['title']?>" placeholder="请输入文章标题" required autofocus>
+		<header id="header">
+			<div class="logo">
+				<figure>
+					<img src="../images/logo2.png"/>
+				</figure>
+				<h2>每一个人的健康管家</h2>
+			</div>
+			<div class="user">
+				<div class="username">
+					<i class="iconfont icon-user"></i><span>用户名</span>
+				</div>
+				<div class="signout">
+					<a href="" title="退出">
+						<i class="iconfont icon-signout"></i><span>退出</span>
+					</a>					
+				</div>
+			</div>
+		</header>
+		<main id="main">
+			<div class="side-left">
+				<div class="datetime">
+					<!--下面实时显示日期和时间，id分别为 time 和 date-->
+					<span class="time" id="time"></span>
+					<span class="date" id="date"></span>
+				</div>
+				<nav class="manage-nav">
+					<ul>
+						<li>
+							<a href="article.manage.php" title="资讯管理"><i class="iconfont icon-article"></i>资讯管理</a>
+						</li>
+						<li>
+							<a href="tag.manage.php" title="标签管理" class="active"><i class="iconfont icon-tag"></i>标签管理</a>
+						</li>
+					</ul>
+				</nav>				
+			</div>
+			<div class="side-right">
+				<div class="function">
+					<a href="javascript:void(0)" title="取消返回" id="back">
+						<i class="iconfont icon-back"></i>取消返回
+					</a>
+				</div>
+				<form action="modify.tag.handle.php" enctype="multipart/form-data" method="post" id="modifyTagForm" name="modifyTagForm" class="form-horizontal modify-tag-form">
+					<fieldset>
+						<legend>修改标签</legend>
+						<div class="form-group">
+							<label for="title" class="col-sm-2 control-label required">标签名称</label>
+	    					<div class="col-sm-10">
+								<input type="text" id="title" name="title" class="form-control" placeholder="请输入标签名称">
+							</div>
 						</div>
-						<div class="author">
-							<label for="author">作者</label>
-							<input type="text" id="author" name="author" value="<?php echo $data['author']?>" placeholder="请输入文章作者">
+						<div class="form-group">
+							<label for="description" class="col-sm-2 control-label">标签描述</label>
+	    					<div class="col-sm-10">
+								<textarea id="description" name="description" class="form-control" placeholder="请输入标签描述"></textarea>
+							</div>
 						</div>
-						<!--<div class="img">
-							<label for="img">缩率图</label>
-							<input type="file" id="img" name="img" value="" accept="image/gif,image/jpeg,image/pjpeg,image/png" placeholder="请选择文章缩率图">
-							<input type="hidden" name="MAX_FILE_SIZE" value="2097152">
-						</div>-->
-						<div class="description">
-							<label for="description">简介</label>
-							<textarea id="description" name="description" placeholder="请输入文章简介" required><?php echo $data['description']?></textarea>
+						<div class="form-group">
+						    <div class="col-sm-offset-2 col-sm-10">
+						      	<button type="submit" id="modifyTagSubmit" name="modifyTagSubmit" class="btn btn-default modify-tag-submit">确认修改</button>
+						    </div>
 						</div>
-						<div class="body">
-							<label for="body">主要内容</label>
-							<textarea id="body" name="body" placeholder="请输入文章主要内容" required><?php echo $data['body']?></textarea>
-						</div>
-						<button type="submit" id="modifyMessageSubmit" name="modifyMessageSubmit" class="modify-message-submit">发布</button>
-					</form>
-				</aside>
-			</div>			
+					</fieldset>
+				</form>				
+			</div>
 		</main>
-		<!--<footer>
-			<small>版权信息版权信息版权信息版权信息版权信息版权信息版权信息版权信息版权信息版权信息</small>
-		</footer>-->
+		<script src="../script/jquery-3.2.0.min.js"></script>
+		<script src="../script/bootstrap.min.js"></script>
+		<script src="../script/jquery.validate.min.js"></script>
+		<script src="../script/article.js"></script>
+		<script src="../script/now-datetime.js"></script><!--显示当前日期时间函数-->
 		<script>
-			/*下面进行表单提交前的判断*/
+			/*下面对表单验证进行*/			
+			$(document).ready(function() {
+				// 提示错误
+				$("#modifyTagForm").validate({
+					rules: {
+						title: {
+							required: true
+						}
+					},
+					messages: {
+						title: {
+							required: "请输入资讯标题"
+						}
+					}
+				});
+			});
 		</script>
 	</body>
 </html>

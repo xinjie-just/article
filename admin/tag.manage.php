@@ -32,8 +32,9 @@
 		<main id="main">
 			<div class="side-left">
 				<div class="datetime">
-					<span class="time">15:33</span>
-					<span class="date">2017年11月11日 星期一</span>
+					<!--下面实时显示日期和时间，id分别为 time 和 date-->
+					<span class="time" id="time"></span>
+					<span class="date" id="date"></span>
 				</div>
 				<nav class="manage-nav">
 					<ul>
@@ -69,8 +70,8 @@
 								<td>高血压</td>
 								<td>关于高血压的描述</td>
 								<td>
-									<a href="#" title="编辑">编辑</a>
-									<a href="#" title="删除">删除</a>
+									<a href="modify.tag.php" title="编辑">编辑</a>
+									<a href="del.tag.handle.php" title="删除">删除</a>
 								</td>
 							</tr>
 						</tbody>
@@ -99,5 +100,6 @@
 		</main>
 		<script src="../script/jquery-3.2.0.min.js"></script>
 		<script src="../script/bootstrap.min.js"></script>
+		<script src="../script/now-datetime.js"></script><!--显示当前日期时间函数-->
 	</body>
 </html>
