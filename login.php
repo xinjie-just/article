@@ -79,31 +79,7 @@
 					},
 					errorPlacement: function (error, element) {
 						error.appendTo( element.parents(".form-group").siblings(".form-group").find("#tips"));
-				    }/*,
-				    submitHandler: function() {
-						$.ajax({
-							type:"POST",
-							url: 'login.handle.php',
-							async:true,
-							dataType:"json",
-							data:{
-								name: $("#userName").val(),
-								pwd: $("#userName").val()
-							},							
-							success: function(data){
-								if(data.code == 0){
-									window.location.href = "/admin/add.message.php";
-								} else {
-									$("#tips").css("visibility","visible");
-									$("#tips").html("出现错误：" + data.msg);
-								}  
-							},
-							error: function(jqXHR){
-								$("#tips").css("visibility","visible");
-								$("#tips").html("出现错误：" + jqXHR.status);
-							},							
-						});
-					}*/
+				    }
 				});
 			});
 		</script>

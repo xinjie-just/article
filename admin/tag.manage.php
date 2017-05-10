@@ -1,9 +1,25 @@
+<?php
+	include_once 'islogin.php';	
+
+	require_once('../connect.php');
+	/*输出内容*/
+	$sql = "select * from tag order by id desc";
+	$query  = mysql_query($sql);
+	if($query&&mysql_num_rows($query)){
+		while($row =mysql_fetch_assoc($query)){
+			$data[] = $row;
+		}
+	}else{
+		$data = array();
+	}
+	/*分页*/
+?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 	<head>
 		<meta charset="UTF-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0;">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 		<title>标签管理 | 资讯管理系统后台</title>
 		<meta name="keywords" content="个人健康管理,健康小区建设,基础医疗服务,HCC,智能、便捷、全面,远程医疗服务" />
     	<meta name="description" content="HCC日常健康管理体系是以个人为中心的健康生活平台，引导全民积极参与健康管理，为个人提供全面的健康生活服务，帮助人们建立科学合理的生活方式和健康管理方式的服务平台。" />
@@ -20,10 +36,17 @@
 			</div>
 			<div class="user">
 				<div class="username">
-					<i class="iconfont icon-user"></i><span>用户名</span>
+					<i class="iconfont icon-user"></i>
+					<span>						
+						<?php
+							if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
+						    	echo $_SESSION['username'];
+							}
+						?>
+					</span>
 				</div>
 				<div class="signout">
-					<a href="" title="退出">
+					<a href="../login.out.php" title="退出">
 						<i class="iconfont icon-signout"></i><span>退出</span>
 					</a>					
 				</div>
@@ -64,16 +87,25 @@
 							</tr>
 						</thead>
 						<tbody>
-							<!--这里动态插入标签管理列表-->
+							<?php 
+								if(empty($data)){
+									echo "没有标签，待管理员后台添加"	;
+								}else {							
+									foreach($data as $value){
+							?>
 							<tr>
-								<td>1</td>
-								<td>高血压</td>
-								<td>关于高血压的描述</td>
+								<td><?php echo $value['id']?></td>
+								<td><?php echo $value['tag_name']?></td>
+								<td><?php echo $value['tag_desc']?></td>
 								<td>
-									<a href="modify.tag.php" title="编辑">编辑</a>
-									<a href="del.tag.handle.php" title="删除">删除</a>
+									<a href="modify.tag.php?id=<?php echo $value['id']?>" title="修改这条标签">修改</a>
+									<a href="del.tag.handle.php?id=<?php echo $value['id']?>" title="删除" onclick="javascript:alert('确认要删除该条标签吗？');">删除</a>
 								</td>
 							</tr>
+							<?php
+									}
+								}	
+							?>
 						</tbody>
 					</table>
 				</div>

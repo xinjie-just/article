@@ -516,12 +516,16 @@ label {
                 i {
                     margin-right: 5px;
                 }
-                &:first-of-type {
-                    border-bottom: 1px solid #999;
-                }
                 &:hover,
                 &.active {
                     color: @main-color;
+                }
+            }
+            li {
+                &:first-of-type{
+                    a {
+                        border-bottom: 1px solid #999;
+                    }
                 }
             }
         }
@@ -619,5 +623,40 @@ label.required {
     legend {
         width: auto;
         border-bottom-width: 0;
+    }
+}
+
+/*消息详情页*/
+.message-details {
+    @size: 1rem;
+    padding: @size;
+    width: 100%;
+    max-width: 768px;
+    margin-right: auto;
+    margin-left: auto;
+    & h2 {
+        font-size: @fs;
+        color: @text-color;
+        line-height: 1.4;
+        margin-bottom: @size / 2;        
+    }
+    & .info {
+        font-size: @fs - 4;
+        color: #999;
+        margin-bottom: @size / 2;
+        & time {
+            margin-right: @size / 2;
+        }
+    }
+    & figure {
+        margin-bottom: @size;
+    }
+    .body {
+        line-height: 1.6;
+        font-size: @fs - 2;
+        color: #666;
+        & p {
+            margin-bottom: .8rem;
+        }
     }
 }

@@ -10,7 +10,7 @@
 	$body = $_POST['content'];
 	$dateline =  time();
 
-	$updatesql = "update article set title='$title',tag_codes='$tag',content_url='$link',description=$description,body='$body',dateline=$dateline where id=$id"; // 这里没有修改 id
+	$updatesql = "update article set title='$title',tag_name='$tag',content_url='$link',description=$description,body='$body',dateline=$dateline where id=$id"; // 这里没有修改 id
 	if(mysql_query($updatesql)){
 		echo "<script>alert('修改资讯成功');window.location.href='article.message.php';</script>";
 	}else{

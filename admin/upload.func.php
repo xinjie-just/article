@@ -77,8 +77,3 @@ function uploadFile($fileInfo,$uploadPath = 'uploads',$flag=true,$allowExt=array
 // 	);
 	return $destination;
 }
-
-
-
-
-

@@ -1,8 +1,10 @@
 <?php
+	include_once 'islogin.php';	
+
 	require_once('../connect.php');
 	//读取旧信息
 	$id = $_GET['id'];
-	$query = mysql_query("select * from article where id=$id");
+	$query = mysql_query("select * from tag where id=$id");
 	$data = mysql_fetch_assoc($query);
 ?>
 <!DOCTYPE html>
@@ -10,7 +12,7 @@
 	<head>
 		<meta charset="UTF-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0;">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 		<title>修改标签 | 资讯管理系统后台</title>
 		<meta name="keywords" content="个人健康管理,健康小区建设,基础医疗服务,HCC,智能、便捷、全面,远程医疗服务" />
     	<meta name="description" content="HCC日常健康管理体系是以个人为中心的健康生活平台，引导全民积极参与健康管理，为个人提供全面的健康生活服务，帮助人们建立科学合理的生活方式和健康管理方式的服务平台。" />
@@ -27,10 +29,17 @@
 			</div>
 			<div class="user">
 				<div class="username">
-					<i class="iconfont icon-user"></i><span>用户名</span>
+					<i class="iconfont icon-user"></i>
+					<span>						
+						<?php
+							if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
+						    	echo $_SESSION['username'];
+							}
+						?>
+					</span>
 				</div>
 				<div class="signout">
-					<a href="" title="退出">
+					<a href="../login.out.php" title="退出">
 						<i class="iconfont icon-signout"></i><span>退出</span>
 					</a>					
 				</div>
@@ -63,16 +72,17 @@
 				<form action="modify.tag.handle.php" enctype="multipart/form-data" method="post" id="modifyTagForm" name="modifyTagForm" class="form-horizontal modify-tag-form">
 					<fieldset>
 						<legend>修改标签</legend>
+						<input type="hidden" name="id" value="<?php echo $data['id']?>">
 						<div class="form-group">
 							<label for="title" class="col-sm-2 control-label required">标签名称</label>
 	    					<div class="col-sm-10">
-								<input type="text" id="title" name="title" class="form-control" placeholder="请输入标签名称">
+								<input type="text" id="title" name="title" value="<?php echo $data['tag_name']?>" class="form-control" placeholder="请输入标签名称">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="description" class="col-sm-2 control-label">标签描述</label>
 	    					<div class="col-sm-10">
-								<textarea id="description" name="description" class="form-control" placeholder="请输入标签描述"></textarea>
+								<textarea id="description" name="description" class="form-control" placeholder="请输入标签描述"><?php echo $data['tag_desc']?></textarea>
 							</div>
 						</div>
 						<div class="form-group">

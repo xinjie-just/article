@@ -527,12 +527,12 @@ label:hover {
 #main .side-left .manage-nav a i {
   margin-right: 5px;
 }
-#main .side-left .manage-nav a:first-of-type {
-  border-bottom: 1px solid #999;
-}
 #main .side-left .manage-nav a:hover,
 #main .side-left .manage-nav a.active {
   color: #337ab7;
+}
+#main .side-left .manage-nav li:first-of-type a {
+  border-bottom: 1px solid #999;
 }
 #main .side-right {
   float: right;
@@ -627,4 +627,37 @@ label.required:after {
 .form-horizontal legend {
   width: auto;
   border-bottom-width: 0;
+}
+/*消息详情页*/
+.message-details {
+  padding: 1rem;
+  width: 100%;
+  max-width: 768px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.message-details h2 {
+  font-size: 16px;
+  color: #333333;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+.message-details .info {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 0.5rem;
+}
+.message-details .info time {
+  margin-right: 0.5rem;
+}
+.message-details figure {
+  margin-bottom: 1rem;
+}
+.message-details .body {
+  line-height: 1.6;
+  font-size: 14px;
+  color: #666;
+}
+.message-details .body p {
+  margin-bottom: .8rem;
 }
