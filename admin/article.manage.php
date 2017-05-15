@@ -76,7 +76,7 @@
 						<i class="iconfont icon-add"></i>添加资讯
 					</a>
 				</div>
-				<div class="table-responsive">
+				<div class='table-responsive'>
 					<table class="article-list table table-condensed table-bordered table-striped table-hover">
 						<thead>
 							<tr>
@@ -98,7 +98,7 @@
 							<tr>
 								<td><?php echo $value['id']?></td>
 								<td><a href="/article.details.php?id=<?php echo $value['id']?>" title="<?php echo $value['title']?>"><?php echo $value['title']?></a></td>
-								<td><?php echo $value['tag_codes']?></td>
+								<td><?php echo $value['tag_name']?></td>
 								<td><?php echo 'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER["SERVER_PORT"] . '/article.details.php?id=' . $value['id'] ?></td>
 								<td><?php date_default_timezone_set("PRC"); echo date("Y-m-d", $value['dateline'])?> </td>
 								<td>
@@ -113,7 +113,7 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="pagination-wrap">
+				<!--<div class="pagination-wrap">
 					<ul class="pagination">
 					    <li>
 					      	<a href="#" aria-label="Previous">
@@ -131,8 +131,7 @@
 					      	</a>
 					    </li>
 					</ul>
-
-				</div>
+				</div>-->
 			</div>
 
 		</main>

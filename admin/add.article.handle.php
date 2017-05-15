@@ -13,9 +13,8 @@
 	$link = $_POST['link'];
 	$description = $_POST['description'];
 	$content = $_POST['content'];
-	/*echo "hello";
-	echo "description 的个数".strlen($description);*/
 	
+	/*如果内容导读没有输入，则截取资讯正文里的前200字符*/
 	if(strlen($description) == 0) {
 		if(strlen($content) >= 200) {
 			$description = substr($content , 0 , 200);

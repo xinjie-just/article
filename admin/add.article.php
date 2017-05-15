@@ -132,9 +132,10 @@ include_once 'islogin.php';
 							<label for="body" class="col-sm-2 control-label required">资讯正文</label>
 	    					<div class="col-sm-10">
 	    						<!--这里是百度 euditor 富文本编辑器-->
-								<script id="container" name="content" type="text/plain" style="width: 100%; height: 300px;">请在此处输入主要内容</script>
+								<script id="container" name="content" type="text/plain" style="width: 100%; height: 300px;"></script>
 							</div>
 						</div>
+						<p id="tips"></p>
 						<div class="form-group">
 						    <div class="col-sm-offset-2 col-sm-10">
 						      	<button type="submit" id="addArticleSubmit" name="addArticleSubmit" class="btn btn-default add-article-submit">添加</button>
@@ -157,8 +158,14 @@ include_once 'islogin.php';
 		    
 			/*下面对表单验证进行*/			
 			$(document).ready(function() {
-				// 提示错误
 				$("#addArticleForm").validate({
+					/*errorPlacement: function(error, element) {
+						if (element.attr("type") == "checkbox") {
+							error.appendTo(element.parents("div"));							
+						} else {
+							error.appendTo(element.parent());
+						}
+					},*/
 					rules: {
 						title: {
 							required: true
@@ -167,7 +174,8 @@ include_once 'islogin.php';
 							required: true
 						},
 						link: {
-							required: true
+							required: true,
+							//url: true
 						},
 						img: {
 							required: true
@@ -184,7 +192,8 @@ include_once 'islogin.php';
 							required: "请选择标签"
 						},
 						link: {
-							required: "请输入链接"
+							required: "请输入链接",
+							//url: "必须是一个有效的 url"
 						},
 						img: {
 							required: "请选择缩率图"

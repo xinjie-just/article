@@ -109,7 +109,7 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="pagination-wrap">
+				<!--<div class="pagination-wrap">
 					<ul class="pagination">
 					    <li>
 					      	<a href="#" aria-label="Previous">
@@ -127,7 +127,7 @@
 					      	</a>
 					    </li>
 					</ul>				
-				</div>
+				</div>-->
 			</div>
 		</main>
 		<script src="../script/jquery-3.2.0.min.js"></script>

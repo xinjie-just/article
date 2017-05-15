@@ -1,12 +1,11 @@
 <?php<
-include_once 'islogin.php';	
+	include_once 'islogin.php';
 
 	require_once('../connect.php');
 	//读取旧信息
 	$id = $_GET['id'];
 	$query = mysql_query("select * from article where id=$id");
 	$data = mysql_fetch_assoc($query);
-
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -95,17 +94,15 @@ include_once 'islogin.php';
 									if(empty($data)){
 										echo "没有标签，待管理员后台添加"	;
 									}else {							
-										foreach($data as $key=>$value){
-										$tag_name = explode(',', $value['tag_name']); // 分解为数组
+										foreach($data as $value){
 								?>
 	    						<label class="checkbox-inline">
-									<input type="checkbox" name="modifyArticleTag[]" value="<?php echo $value['tag_name'] ?>" <?php if(in_array(1, $tag_name)){ echo 'checked="checked"';} ?>> <?php echo $value['tag_name'] ?>
+									<input type="checkbox" name="modifyArticleTag[]" value="<?php echo $value['tag_name'] ?>" > <?php echo $value['tag_name'] ?>
 								</label>									
 								<?php
 										}
 									}	
-								?>						
-								
+								?>								
 							</div>
 						</div>
 						<div class="form-group">
@@ -150,9 +147,6 @@ include_once 'islogin.php';
 		    //实例化编辑器
 		    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
 		    var ue = UE.getEditor('container');
-		    ue.ready(function() {
-		    	ue.setContent("<?php echo $data['body'] ?>", false);
-		    });
 		    
 			/*下面进行表单提交前的判断*/
 			$(document).ready(function() {

@@ -8,12 +8,13 @@
 	$queryuser = mysql_query($sqluser);
 	$rowuser = mysql_fetch_array($queryuser); //从结果集中取得一行作为关联数组
 	if ($rowuser && is_array($rowuser) && !empty($rowuser)) {
-	    if ($rowuser['username'] == $username && $rowuser['userpassword'] == $userpassword) {
+	    if ($rowuser['username'] === $username && $rowuser['userpassword'] === $userpassword) {
         		$_SESSION['username'] = $username;
 	        	echo "<p style='width: 100%; max-width: 767px; margin: 50px auto 0; font-size: 18px;'>登录成功,两秒后跳转</p>";
 	        	echo "<script>setTimeout(function(){window.location.href='/admin/article.manage.php'},2000)</script>";
 	    }
 	} else {
 	    echo "<script>alert('用户名或密码错误');window.location.href='login.php';</script>";
+	    exit;
 	} 
 ?>
